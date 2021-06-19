@@ -5,14 +5,19 @@
  *
  */
 
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export default function HomePage() {
-  return (
-    <h1>
-      <FormattedMessage {...messages.header} />
-    </h1>
-  );
+  const [strings, setStrings] = useState([]);
+
+  useEffect(() => {
+    async function fetchStrings() {
+      const results = await axios.get('/api');
+      setStrings(results.data.strings);
+    }
+    fetchStrings();
+  }, []);
+
+  return strings && strings.map(s => <p>{s}</p>);
 }
