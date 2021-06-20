@@ -6,16 +6,25 @@
  */
 
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function NewStringPage() {
+  const dispatch = useDispatch();
+  const strings = useSelector(state => state.strings.strings);
+  console.log('STRINGS', strings);
+
   const [formData, setFormData] = useState({ string: '' });
 
-  async function handleSubmit(evt) {
+  // async function handleSubmit(evt) {
+  //   evt.preventDefault();
+  //   const res = await axios.post('/api', formData);
+  //   console.log(res);
+  //   // TODO: REROUTE
+  // }
+
+  function handleSubmit(evt) {
     evt.preventDefault();
-    const res = await axios.post('/api', formData);
-    console.log(res);
-    // TODO: REROUTE
+    dispatch({ type: 'ADD_STRING', string: formData.string });
   }
 
   function handleChange(evt) {

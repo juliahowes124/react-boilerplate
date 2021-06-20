@@ -6,10 +6,11 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleware } from 'connected-react-router';
 import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
+import stringsReducer from './reducer';
 
 export default function configureStore(initialState = {}, history) {
   let composeEnhancers = compose;
-  const reduxSagaMonitorOptions = {};
+  let reduxSagaMonitorOptions = {};
 
   // If Redux Dev Tools and Saga Dev Tools Extensions are installed, enable them
   /* istanbul ignore next */
@@ -20,10 +21,10 @@ export default function configureStore(initialState = {}, history) {
 
     // NOTE: Uncomment the code below to restore support for Redux Saga
     // Dev Tools once it supports redux-saga version 1.x.x
-    // if (window.__SAGA_MONITOR_EXTENSION__)
-    //   reduxSagaMonitorOptions = {
-    //     sagaMonitor: window.__SAGA_MONITOR_EXTENSION__,
-    //   };
+    if (window.__SAGA_MONITOR_EXTENSION__)
+      reduxSagaMonitorOptions = {
+        sagaMonitor: window.__SAGA_MONITOR_EXTENSION__,
+      };
     /* eslint-enable */
   }
 
@@ -37,7 +38,7 @@ export default function configureStore(initialState = {}, history) {
   const enhancers = [applyMiddleware(...middlewares)];
 
   const store = createStore(
-    createReducer(),
+    createReducer(stringsReducer),
     initialState,
     composeEnhancers(...enhancers),
   );
