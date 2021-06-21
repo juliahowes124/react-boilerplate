@@ -1,4 +1,4 @@
-import { ADD_STRING } from './actions';
+import { SET_STRINGS } from './actions';
 
 const DEFAULT_STATE = {
   strings: [],
@@ -6,8 +6,8 @@ const DEFAULT_STATE = {
 
 export default function stringsReducer(state = DEFAULT_STATE, action = {}) {
   switch (action.type) {
-    case ADD_STRING:
-      return { ...state, strings: [action.string] };
+    case SET_STRINGS:
+      return { strings: action.strings };
     default:
       return state;
   }

@@ -8,6 +8,8 @@ import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
 import stringsReducer from './reducer';
 
+import rootSaga from './sagas';
+
 export default function configureStore(initialState = {}, history) {
   let composeEnhancers = compose;
   let reduxSagaMonitorOptions = {};
@@ -42,6 +44,8 @@ export default function configureStore(initialState = {}, history) {
     initialState,
     composeEnhancers(...enhancers),
   );
+
+  sagaMiddleware.run(rootSaga);
 
   // Extensions
   store.runSaga = sagaMiddleware.run;

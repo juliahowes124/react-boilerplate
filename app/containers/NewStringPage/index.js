@@ -15,16 +15,9 @@ export default function NewStringPage() {
 
   const [formData, setFormData] = useState({ string: '' });
 
-  // async function handleSubmit(evt) {
-  //   evt.preventDefault();
-  //   const res = await axios.post('/api', formData);
-  //   console.log(res);
-  //   // TODO: REROUTE
-  // }
-
   function handleSubmit(evt) {
     evt.preventDefault();
-    dispatch({ type: 'ADD_STRING', string: formData.string });
+    dispatch({ type: 'ADD_STRING_ASYNC', string: formData.string });
   }
 
   function handleChange(evt) {

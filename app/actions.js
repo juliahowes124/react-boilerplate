@@ -1,5 +1,5 @@
 export const GET_STRINGS = 'GET_STRINGS';
-export const ADD_STRING = 'ADD_STRING';
+export const SET_STRINGS = 'SET_STRINGS';
 
 export function getStrings() {
   return {
@@ -7,9 +7,9 @@ export function getStrings() {
   };
 }
 
-export function addString(string) {
+export function setStrings(strings) {
   return {
-    type: ADD_STRING,
-    string,
+    type: SET_STRINGS,
+    strings,
   };
 }
