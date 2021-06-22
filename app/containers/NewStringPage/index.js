@@ -8,6 +8,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
 const StyledButton = styled.button`
   background-color: ${props => props.bg};
@@ -17,12 +18,14 @@ const StyledButton = styled.button`
 
 export default function NewStringPage() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [formData, setFormData] = useState({ string: '' });
 
   function handleSubmit(evt) {
     evt.preventDefault();
     dispatch({ type: 'ADD_STRING_ASYNC', string: formData.string });
     setFormData({ string: '' });
+    history.push('/');
   }
 
   function handleChange(evt) {
