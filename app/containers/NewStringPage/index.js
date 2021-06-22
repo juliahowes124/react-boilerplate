@@ -6,18 +6,23 @@
  */
 
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import styled from 'styled-components';
+
+const StyledButton = styled.button`
+  background-color: ${props => props.bg};
+  color: white;
+  border: 2px solid darkgreen;
+`;
 
 export default function NewStringPage() {
   const dispatch = useDispatch();
-  const strings = useSelector(state => state.strings.strings);
-  console.log('STRINGS', strings);
-
   const [formData, setFormData] = useState({ string: '' });
 
   function handleSubmit(evt) {
     evt.preventDefault();
     dispatch({ type: 'ADD_STRING_ASYNC', string: formData.string });
+    setFormData({ string: '' });
   }
 
   function handleChange(evt) {
@@ -28,6 +33,7 @@ export default function NewStringPage() {
   return (
     <form onSubmit={handleSubmit}>
       <input name="string" value={formData.string} onChange={handleChange} />
+      <StyledButton bg="red">Add</StyledButton>
     </form>
   );
 }

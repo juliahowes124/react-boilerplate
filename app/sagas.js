@@ -13,10 +13,10 @@ function* getStringsAsync() {
 function* addStringAsync(action) {
   async function addString() {
     const res = await axios.post('/api', { string: action.string });
-    return res;
+    return res.data.strings;
   }
-  const { data } = yield addString();
-  yield put({ type: 'SET_STRINGS', strings: data.strings });
+  const strings = yield addString();
+  yield put({ type: 'SET_STRINGS', strings });
 }
 
 function* watchGetStringsAsync() {

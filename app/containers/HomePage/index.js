@@ -5,14 +5,17 @@
  *
  */
 
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { stringSelector } from '../../selectors';
 
 export default function HomePage() {
-  // const [strings, setStrings] = useState([]);
-  const strings = useSelector(state => state.strings.strings);
-  console.log('STRINGS', strings);
+  const strings = useSelector(stringSelector);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({ type: 'GET_STRINGS_ASYNC' });
+  }, []);
 
   return strings && strings.map(s => <p>{s}</p>);
 }
