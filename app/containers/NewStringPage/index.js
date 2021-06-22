@@ -23,7 +23,7 @@ export default function NewStringPage() {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    dispatch({ type: 'ADD_STRING_ASYNC', string: formData.string });
+    dispatch({ type: 'ADD_STRING', string: formData.string });
     setFormData({ string: '' });
     history.push('/');
   }

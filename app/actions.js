@@ -1,4 +1,5 @@
 export const GET_STRINGS_ASYNC = 'GET_STRINGS_ASYNC';
+export const ADD_STRING_ASYNC = 'ADD_STRING_ASYNC';
 export const SET_STRINGS = 'SET_STRINGS';
 
 export function getStrings() {

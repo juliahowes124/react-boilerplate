@@ -7,7 +7,7 @@ function* getStringsAsync() {
     return res.data.strings;
   }
   const strings = yield getStrings();
-  yield put({ type: 'SET_STRINGS', strings });
+  yield put({ type: 'GET_STRINGS_ASYNC', strings });
 }
 
 function* addStringAsync(action) {
@@ -16,15 +16,15 @@ function* addStringAsync(action) {
     return res.data.strings;
   }
   const strings = yield addString();
-  yield put({ type: 'SET_STRINGS', strings });
+  yield put({ type: 'ADD_STRING_ASYNC', strings });
 }
 
 function* watchGetStringsAsync() {
-  yield takeEvery('GET_STRINGS_ASYNC', getStringsAsync);
+  yield takeEvery('GET_STRINGS', getStringsAsync);
 }
 
 function* watchAddStringAsync() {
-  yield takeEvery('ADD_STRING_ASYNC', addStringAsync);
+  yield takeEvery('ADD_STRING', addStringAsync);
 }
 
 export default function* rootSaga() {
