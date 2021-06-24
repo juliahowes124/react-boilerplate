@@ -17,7 +17,7 @@ exports[`<NewStringPage /> should render and match the snapshot 1`] = `
       value=""
     />
     <button
-      class="styledComponents__StyledButton-sc-1tnxmlh-1 hhoHgW"
+      class="styledComponents__StyledButton-sc-1tnxmlh-1 fmoCRp"
     >
       Submit
     </button>

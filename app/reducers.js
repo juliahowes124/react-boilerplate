@@ -12,12 +12,11 @@ import stringsReducer from './reducer';
 /**
  * Merges the main reducer with the router state and dynamically injected reducers
  */
-export default function createReducer(injectedReducers = {}) {
+export default function createReducer() {
   const rootReducer = combineReducers({
     language: languageProviderReducer,
     router: connectRouter(history),
     strings: stringsReducer,
-    ...injectedReducers,
   });
   return rootReducer;
 }

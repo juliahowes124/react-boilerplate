@@ -6,8 +6,12 @@ function* getStringsAsync() {
     const res = await axios.get('/api');
     return res.data.strings;
   }
-  const strings = yield getStrings();
-  yield put({ type: 'GET_STRINGS_ASYNC', strings });
+  try {
+    const strings = yield getStrings();
+    yield put({ type: 'GET_STRINGS_ASYNC', strings });
+  } catch (error) {
+    yield put({ type: 'GET_REQUEST_FAILED', error });
+  }
 }
 
 function* addStringAsync(action) {

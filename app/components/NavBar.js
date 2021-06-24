@@ -1,13 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
-
-const StyledNavBar = styled.div`
-  background-color: lightgray;
-  display: flex;
-  padding: 1rem;
-  width: 100%;
-`;
+import { StyledNavBar } from '../styledComponents';
 
 export default function NavBar() {
   return (

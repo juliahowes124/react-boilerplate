@@ -11,13 +11,14 @@ import { v4 as uuidv4 } from 'uuid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { stringSelector } from '../../selectors';
+import { GET_STRINGS } from '../../actions';
 
 export default function HomePage() {
   const strings = useSelector(stringSelector);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({ type: 'GET_STRINGS' });
+    dispatch({ type: GET_STRINGS });
   }, []);
 
   return strings.length ? (

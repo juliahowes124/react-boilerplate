@@ -1,13 +1,14 @@
 /*
  * NewStringPage
  *
- * This is the first thing users see of our App, at the '/' route
+ * This is the page with a form to add a new string, at the '/new' route
  *
  */
 
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { ADD_STRING } from '../../actions';
 import { StyledTitle, StyledButton } from '../../styledComponents';
 
 export default function NewStringPage() {
@@ -17,7 +18,7 @@ export default function NewStringPage() {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    dispatch({ type: 'ADD_STRING', string: formData.string });
+    dispatch({ type: ADD_STRING, string: formData.string });
     setFormData({ string: '' });
     history.push('/');
   }
