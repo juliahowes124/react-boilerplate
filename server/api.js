@@ -8,6 +8,7 @@ router.get('/', async (req, res) => res.json({ strings: DUMMY_STRINGS }));
 /** POSTs new string to prepend to strings */
 router.post('/', async (req, res) => {
   const { string } = req.body;
+  if (!string) throw new Error('String must not be empty');
   DUMMY_STRINGS.unshift(string);
   return res.json({ strings: DUMMY_STRINGS });
 });

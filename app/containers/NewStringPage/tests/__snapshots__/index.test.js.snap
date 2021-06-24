@@ -1,9 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<HomePage /> should render and match the snapshot 1`] = `
-<h1>
-  <span>
-    This is the HomePage container!
-  </span>
-</h1>
+exports[`<NewStringPage /> should render and match the snapshot 1`] = `
+<form>
+  <h1
+    class="styledComponents__StyledTitle-sc-1tnxmlh-0 eTIHrx"
+  >
+    Add a new string
+  </h1>
+  <div>
+    <input
+      aria-label="string"
+      id="string"
+      name="string"
+      placeholder="Enter a new string"
+      required=""
+      value=""
+    />
+    <button
+      class="styledComponents__StyledButton-sc-1tnxmlh-1 hhoHgW"
+    >
+      Submit
+    </button>
+  </div>
+</form>
 `;

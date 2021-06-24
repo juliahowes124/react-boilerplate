@@ -15,8 +15,12 @@ function* addStringAsync(action) {
     const res = await axios.post('/api', { string: action.string });
     return res.data.strings;
   }
-  const strings = yield addString();
-  yield put({ type: 'ADD_STRING_ASYNC', strings });
+  try {
+    const strings = yield addString();
+    yield put({ type: 'ADD_STRING_ASYNC', strings });
+  } catch (error) {
+    yield put({ type: 'ADD_REQUEST_FAILED', error });
+  }
 }
 
 function* watchGetStringsAsync() {

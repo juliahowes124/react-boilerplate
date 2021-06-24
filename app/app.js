@@ -32,10 +32,12 @@ import configureStore from './configureStore';
 
 // Import i18n messages
 import { translationMessages } from './i18n';
+import rootSaga from './sagas';
 
 // Create redux store with history
 const initialState = {};
 const store = configureStore(initialState, history);
+store.runSaga(rootSaga);
 const MOUNT_NODE = document.getElementById('app');
 
 const render = messages => {

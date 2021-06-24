@@ -7,14 +7,8 @@
 
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
-
-const StyledButton = styled.button`
-  background-color: ${props => props.bg};
-  color: white;
-  border: 2px solid darkgreen;
-`;
+import { StyledTitle, StyledButton } from '../../styledComponents';
 
 export default function NewStringPage() {
   const dispatch = useDispatch();
@@ -35,8 +29,19 @@ export default function NewStringPage() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input name="string" value={formData.string} onChange={handleChange} />
-      <StyledButton bg="red">Add</StyledButton>
+      <StyledTitle bg="purple">Add a new string</StyledTitle>
+      <div>
+        <input
+          name="string"
+          id="string"
+          aria-label="string"
+          required
+          placeholder="Enter a new string"
+          value={formData.string}
+          onChange={handleChange}
+        />
+        <StyledButton bg="purple">Submit</StyledButton>
+      </div>
     </form>
   );
 }
